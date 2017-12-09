@@ -18,7 +18,7 @@
 
 4. 使用 scripts 目录下的 python 脚本生成数据, 需要 python3,
 
-    ** 安装依赖包
+    * 安装依赖包
 
     `pip3 install bts`
 
@@ -30,20 +30,20 @@
 
     `pip3 install graphenelib`
 
-    ** 修改配置文件 config.json
+    * 修改配置文件 config.json
 
     一个是 mongodb 数据库，上面 meteor 启动后默认在 3001 端口开了个 mongodb 服务器。
 
     一个是 witness_node api 地址，用来获取区块链数据
 
-    ** 初始化 balance, order 数据，只需要初始化运行一次
+    * 初始化 balance, order 数据，只需要初始化运行一次
 
     运行 `python3 correct-balance.py config.json` ，注意作为 demo 代码中我只获取了很少量的数据。
 
-    ** 实时监控历史记录、orderbook, balance 等数据
+    * 实时监控历史记录、orderbook, balance 等数据
 
     `python3 monitor.py config.json`
 
-    ** 处理统计数据:
-    
+    * 处理统计数据:
+
     `python3 statistics.py config.json`
