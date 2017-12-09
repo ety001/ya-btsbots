@@ -14,7 +14,9 @@
 1) 安装依赖包
 
     pip3 install bts
+
     pip3 install pymongo
+
     pip3 install pycrypto
 
 2) 修改配置文件 config.json
