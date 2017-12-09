@@ -1,20 +1,20 @@
 1. 安装 meteor
 
-`curl https://install.meteor.com/ | sh`
+    `curl https://install.meteor.com/ | sh`
 
 2. 下载代码，安装 npm 包
 
-`git clone https://github.com/ety001/btsbots-demo-2016.git`
+    `git clone https://github.com/ety001/btsbots-demo-2016.git`
 
-`cd btsbots-demo-2016; npm install`
+    `cd btsbots-demo-2016; npm install`
 
 3. 运行 meteor 服务端程序，默认端口为本机 3000 端口，运行成功之后通过浏览器访问本机 3000 端口可以看到页面，但是还没有数据。
 
-`cd btsbots-demo-2016; meteor run`
+    `cd btsbots-demo-2016; meteor run`
 
 在docker中需要先执行：
 
-`apt-get install -y locales && locale-gen en_US.UTF-8`
+    `apt-get install -y locales && locale-gen en_US.UTF-8`
 
 4. 使用 scripts 目录下的 python 脚本生成数据, 需要 python3,
 
