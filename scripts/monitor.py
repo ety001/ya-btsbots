@@ -24,7 +24,6 @@ class Monitor(BaseProtocol):
             yield from self.helper.handle_operation(notify)
 
     def onOperation(self, notify):
-        print(11111)
         asyncio.async(self._onOperation(notify))
 
     @asyncio.coroutine
@@ -59,6 +58,9 @@ class Monitor(BaseProtocol):
         self.helper.init_p(self)
         self.subscribe("1.11.", self.onOperation)
         self.subscribe("2.1.0", self.onGlobalProperties)
+        self.rpc([self.database_api, "set_subscribe_callback", [200, True]])
+        self.rpc([self.database_api, "get_objects", [["2.1.0"]]])
+
 
 if __name__ == '__main__':
 
