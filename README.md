@@ -12,7 +12,7 @@
 
     `cd btsbots-demo-2016; meteor run`
 
-在docker中需要先执行：
+    在docker中需要先执行：
 
     `apt-get install -y locales && locale-gen en_US.UTF-8`
 
