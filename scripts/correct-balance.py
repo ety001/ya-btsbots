@@ -13,8 +13,8 @@ except ImportError:
     import trollius as asyncio
 
 
-D_ID = '1.8.260'  # 1.8.2590
-B_ID = '2.5.424'  # 2.5.42388
+D_ID = '1.8.2590'
+B_ID = '2.5.42388'
 
 
 class CorrectBalance(BaseProtocol):
