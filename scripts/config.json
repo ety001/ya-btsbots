@@ -1,9 +1,9 @@
 {
     "mongo": {
         "host": "localhost",
-        "port": 3001,
+        "port": 27017,
         "db": "meteor"
     },
-    "api_server": "ws://localhost:8090"
+    "api_server": "wss://bitshares.dacplay.org/ws"
 }
 
