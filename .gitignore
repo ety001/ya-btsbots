@@ -1,2 +1,3 @@
 node_modules/
 cordova-build-override/
+__pycache__/
