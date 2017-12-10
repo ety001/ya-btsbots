@@ -84,7 +84,7 @@ Meteor.startup(() => {
         return Chats.find({}, {sort: {ts: -1}, limit: limit});
     });
 
-    apis = Apis.instance("ws://localhost:8090/ws", true);
+    apis = Apis.instance("wss://bitshares-api.wancloud.io/ws", true);
     apis.init_promise.then((res) => {
         console.log("connected to:", res[0].network_name, "network");
     });
