@@ -50,6 +50,7 @@ class Monitor(BaseProtocol):
         self.lock.release()
 
     def onGlobalProperties(self, notify):
+        print("onGlobalProperties")
         self.helper.handle_gp(notify)
 
     @asyncio.coroutine
@@ -58,6 +59,8 @@ class Monitor(BaseProtocol):
         self.helper.init_p(self)
         self.subscribe("1.11.", self.onOperation)
         self.subscribe("2.1.0", self.onGlobalProperties)
+        yield from self.rpc(
+            [self.database_api, "get_objects", [["2.1.0"]]])
 
 
 if __name__ == '__main__':
