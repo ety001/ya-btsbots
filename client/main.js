@@ -1100,7 +1100,7 @@ execute_bots = function(type){
     let config = {};
     config.spread = document.getElementById('mm_spread_'+type).value;
     config.balance_cny = document.getElementById('mm_balance_'+type).value;
-    config.t = document.getElementById('mm_t_'+type).value;
+    config.t = document.getElementById('mm_t_'+type) ? document.getElementById('mm_t_'+type).value : ""; // edit by ety001
     if(config.t == "")
         config.t = "mm1";
     if (type == 'sell'){
