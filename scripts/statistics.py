@@ -20,10 +20,12 @@ class Statistics(BaseProtocol):
     asset_list = [
         "CNY", "BTC", "SILVER", "GOLD", "TRY", "SGD", "HKD", "NZD", "MXN",
         "CAD", "CHF", "AUD", "GBP", "JPY", "EUR", "USD", "KRW", "TUSD",
-        "ARS"]
+        "ARS", "OPEN.DASH", "OPEN.ETH", "YOYOW", "OPEN.EOS", "BRIDGE.BCO", "OPEN.STEEM",
+        "OPEN.LTC", "BRIDGE.MONA", "IPFS", "OBITS", "RMB", "OPEN.DOGE", "HERO", "OPEN.SBD",
+        "AUD", "BTCX", "OPEN.OMG"]
     alias = {
-        "BTC": ["OPEN.BTC", "TRADE.BTC"], "USD": ["OPEN.USD", "OPEN.USDT"],
-        "EUR": ["OPEN.EUR"], "CNY": ["OPEN.CNY"], "RUB": ["RUBLE"]}
+        "BTC": ["OPEN.BTC", "BRIDGE.BTC", "GDEX.BTC"], "USD": ["OPEN.USDT"],
+        "EUR": ["OPEN.EUR"], "RUB": ["RUBLE"]}
     price = {"CNY": 1.0}
 
     def init_helper(self, helper):
@@ -109,8 +111,8 @@ class Statistics(BaseProtocol):
         yield from self.init_price()
         self.subscribe("1.11.", self.onOperation)
         self.subscribe("2.1.0", self.onGlobalProperties)
-        #yield from self.rpc([self.database_api, "set_subscribe_callback", [200, True]])
-        #yield from self.rpc([self.database_api, "get_objects", [["2.1.0"]]])
+        yield from self.rpc([self.database_api, "set_subscribe_callback", [200, True]])
+        yield from self.rpc([self.database_api, "get_objects", [["2.1.0"]]])
 
 if __name__ == '__main__':
 

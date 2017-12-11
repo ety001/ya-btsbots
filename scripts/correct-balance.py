@@ -14,7 +14,7 @@ except ImportError:
 
 
 D_ID = '1.8.2590'
-B_ID = '2.5.42388'
+B_ID = '2.5.230010'
 
 
 class CorrectBalance(BaseProtocol):
