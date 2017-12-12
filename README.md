@@ -1,3 +1,7 @@
+# YA-Btsbots
+
+YA-Btsbots(Yet another btsbots) 是从btsbots.com继承出来的一个开源项目，项目遵循MIT协议开源.
+
 1. 安装 meteor
 
     `curl https://install.meteor.com/ | sh`
