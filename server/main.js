@@ -1,4 +1,5 @@
 import { Meteor } from 'meteor/meteor';
+var apiUrl = process.env.API_URL ? process.env.API_URL : 'wss://bitshares.dacplay.org/ws';
 var {Apis} = require("graphenejs-ws");
 var {Signature, ChainStore, FetchChain, PublicKey, PrivateKey, TransactionHelper, Aes, TransactionBuilder} = require("graphenejs-lib");
 
@@ -84,7 +85,7 @@ Meteor.startup(() => {
         return Chats.find({}, {sort: {ts: -1}, limit: limit});
     });
 
-    apis = Apis.instance("wss://bitshares-api.wancloud.io/ws", true);
+    apis = Apis.instance(apiUrl, true);
     apis.init_promise.then((res) => {
         console.log("connected to:", res[0].network_name, "network");
     });
