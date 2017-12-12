@@ -20,12 +20,10 @@ class Statistics(BaseProtocol):
     asset_list = [
         "CNY", "BTC", "SILVER", "GOLD", "TRY", "SGD", "HKD", "NZD", "MXN",
         "CAD", "CHF", "AUD", "GBP", "JPY", "EUR", "USD", "KRW", "TUSD",
-        "ARS", "OPEN.DASH", "OPEN.ETH", "YOYOW", "OPEN.EOS", "BRIDGE.BCO", "OPEN.STEEM",
-        "OPEN.LTC", "BRIDGE.MONA", "IPFS", "OBITS", "RMB", "OPEN.DOGE", "HERO", "OPEN.SBD",
-        "AUD", "BTCX", "OPEN.OMG"]
+        "ARS"]
     alias = {
-        "BTC": ["OPEN.BTC", "BRIDGE.BTC", "GDEX.BTC"], "USD": ["OPEN.USDT"],
-        "EUR": ["OPEN.EUR"], "RUB": ["RUBLE"]}
+        "BTC": ["OPEN.BTC", "TRADE.BTC"], "USD": ["OPEN.USD", "OPEN.USDT"],
+        "EUR": ["OPEN.EUR"], "CNY": ["OPEN.CNY"], "RUB": ["RUBLE"]}
     price = {"CNY": 1.0}
 
     def init_helper(self, helper):
