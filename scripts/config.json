@@ -4,6 +4,6 @@
         "port": 27017,
         "db": "meteor"
     },
-    "api_server": "wss://bitshares.dacplay.org/ws"
+    "api_server": "wss://bts.mypi.win/ws"
 }
 
