@@ -8,9 +8,9 @@ YA-Btsbots(Yet another btsbots) 是从 [btsbots.com](https://github.com/pch957/p
 
 2. 下载代码，安装 npm 包
 
-    `git clone https://github.com/ety001/btsbots-demo-2016.git`
+    `git clone https://github.com/ety001/ya-btsbots.git` 
 
-    `cd btsbots-demo-2016; npm install`
+    `cd ya-btsbots; npm install`
 
 3. 运行 meteor 服务端程序，默认端口为本机 3000 端口，运行成功之后通过浏览器访问本机 3000 端口可以看到页面，但是还没有数据。
 
