@@ -1,9 +1,9 @@
 {
     "mongo": {
         "host": "localhost",
-        "port": 27017,
+        "port": 3001,
         "db": "meteor"
     },
-    "api_server": "wss://bts.mypi.win/ws"
+    "api_server": "wss://bts.to0l.cn:4443/ws"
 }
 
