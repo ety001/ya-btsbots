@@ -13,8 +13,8 @@ except ImportError:
     import trollius as asyncio
 
 
-D_ID = '1.8.2590'
-B_ID = '2.5.230010'
+D_ID = '1.8.2590' # call_order_id
+B_ID = '2.5.230010' # balance_id
 
 
 class CorrectBalance(BaseProtocol):
@@ -44,10 +44,12 @@ class CorrectBalance(BaseProtocol):
         _asset_info = yield from self.get_object(_info["asset_id"])
         _a = _asset_info["symbol"]
         _b = float(_info["amount"])/10**_asset_info["precision"]
+        # return balance, asset
         return _b, _a
 
     @asyncio.coroutine
     def get_u(self, _id):
+        # get_user
         response = yield from self.get_object(_id)
         return response["name"]
 
@@ -58,9 +60,9 @@ class CorrectBalance(BaseProtocol):
     def onOpen(self):
         signal.signal(signal.SIGINT, signal.SIG_IGN)
         yield from super().onOpen()
-        yield from self.update_gp()
-        yield from self.update_o()
-        yield from self.update_b()
+        yield from self.update_gp() # update global_properties 
+        yield from self.update_o() # update call orders
+        yield from self.update_b() # update balance
         self.add_b_from_o()
         signal.signal(signal.SIGINT, signal.SIG_DFL)
 
@@ -80,11 +82,13 @@ class CorrectBalance(BaseProtocol):
 
     @asyncio.coroutine
     def _update_o(self, _e):
-        u = yield from self.get_u(_e['borrower'])
+        u = yield from self.get_u(_e['borrower']) # get_borrower_user_name
         _e['call_price']['base']['amount'] = _e['collateral']
         b_c, a_c = yield from self.get_b(_e['call_price']['base'])
         _e['call_price']['quote']['amount'] = _e['debt']
         b_d, a_d = yield from self.get_b(_e['call_price']['quote'])
+        # t - type, u - username, a_c - asset of collateral(base), b_c - balance of collateral(base)
+        # a_d - asset of debt(quote), b_d - balance of debt(quote)
         self.db_order.insert_one(
             {'t': 8, 'u': u, 'a_c': a_c, 'b_c': b_c, 'a_d': a_d, 'b_d': b_d})
 
@@ -97,11 +101,12 @@ class CorrectBalance(BaseProtocol):
 
     @asyncio.coroutine
     def _update_b(self, _e):
-        b_i = {'amount': _e['balance'], 'asset_id': _e['asset_type']}
-        b, a = yield from self.get_b(b_i)
+        b_i = {'amount': _e['balance'], 'asset_id': _e['asset_type']} # balance_info
+        b, a = yield from self.get_b(b_i) # balance, asset
         if self.is_zero(b, _e['asset_type']):
             return
         u = yield from self.get_u(_e['owner'])
+        # u - username, a - asset, b - balance
         self.db_balance.update_one({'u': u, 'a': a}, {'$inc': {'b': b}}, True)
 
     def add_b_from_o(self):

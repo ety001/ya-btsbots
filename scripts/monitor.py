@@ -39,6 +39,7 @@ class Monitor(BaseProtocol):
             signal.signal(signal.SIGINT, signal.SIG_DFL)
             return
         for _i in range(id_to_int(op_id_begin), id_to_int(op_id_cur)):
+            print("get object : 1.11.%s" % _i)
             response = yield from self.rpc(
                 [self.database_api, "get_objects", [["1.11.%s" % _i]]])
             _notify = response[0]
@@ -50,6 +51,7 @@ class Monitor(BaseProtocol):
         self.lock.release()
 
     def onGlobalProperties(self, notify):
+        print('get_in_onGlobalProperties')
         self.helper.handle_gp(notify)
 
     @asyncio.coroutine
@@ -59,7 +61,7 @@ class Monitor(BaseProtocol):
         self.subscribe("1.11.", self.onOperation)
         self.subscribe("2.1.0", self.onGlobalProperties)
         yield from self.rpc([self.database_api, "set_subscribe_callback", [200, True]])
-        yield from self.rpc([self.database_api, "get_objects", [["2.1.0"]]])
+        #yield from self.rpc([self.database_api, "get_objects", [["2.1.0"]]])
 
 
 if __name__ == '__main__':

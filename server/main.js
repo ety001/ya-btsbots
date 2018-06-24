@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-var apiUrl = process.env.API_URL ? process.env.API_URL : 'wss://bitshares.dacplay.org/ws';
+var apiUrl = process.env.API_URL ? process.env.API_URL : 'wss://bts.to0l.cn:4443/ws';
 var {Apis} = require("graphenejs-ws");
 var {Signature, ChainStore, FetchChain, PublicKey, PrivateKey, TransactionHelper, Aes, TransactionBuilder} = require("graphenejs-lib");
 

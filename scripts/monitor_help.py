@@ -57,12 +57,12 @@ class MonitorHelper(object):
     def init_begin_op(self):
         _gp = self.db_gp.find_one({})
         if not _gp or 'begin_op' not in _gp:
-            print("no found")
+            print("no found begin_op")
             self.db_op.create_index([('id', pymongo.ASCENDING)], unique=True)
             self.db_order_history.create_index([('id', pymongo.ASCENDING)], unique=True)
             self.db_bc.create_index([('B', pymongo.ASCENDING)])
-            # self.protocal.op_id_begin = '1.11.0'
-            self.protocal.op_id_begin = None
+            self.protocal.op_id_begin = '1.11.0'
+            #self.protocal.op_id_begin = None
         else:
             print("begin id is: %s" % _gp['begin_op'])
             self.protocal.op_id_begin = _gp['begin_op']
